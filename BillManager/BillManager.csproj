@@ -1,0 +1,70 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Views\BillsHomePage.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Views\BillsHomePage.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="mymatieralicons.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="mymatieralicons.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Syncfusion.Licensing" Version="19.1.0.58" />
+    <PackageReference Include="Syncfusion.Xamarin.Core" Version="19.1.0.58" />
+    <PackageReference Include="Syncfusion.Xamarin.Expander" Version="19.1.0.58" />
+    <PackageReference Include="Syncfusion.Xamarin.SfAutoComplete" Version="19.1.0.58" />
+    <PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="19.1.0.58" />
+    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="19.1.0.58" />
+    <PackageReference Include="Syncfusion.Xamarin.SfDataGrid" Version="19.1.0.58" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="19.1.0.58" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="19.1.0.58" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPopupLayout" Version="19.1.0.58" />
+    <PackageReference Include="Syncfusion.Xamarin.SfRangeSlider" Version="19.1.0.58" />
+    <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="19.1.0.58" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\BillManager.Dal\BillManager.Dal\BillManager.Dal.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DataTemplates\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Controls\ListBillTypesView.xaml.cs">
+      <DependentUpon>ListBillTypesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\BillsPage.xaml.cs">
+      <DependentUpon>BillsPage</DependentUpon>
+    </Compile>
+    <Compile Update="Views\BillsDetailPage.xaml.cs">
+      <DependentUpon>BillsDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\NewBillItemPage.xaml.cs">
+      <DependentUpon>NewBillItemPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Controls\ListBillTypesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

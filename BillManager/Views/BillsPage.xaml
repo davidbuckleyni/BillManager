@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BillManager.Views.BillsPage"
+             Title="{Binding Title}" 
+             xmlns:model="clr-namespace:BillManager.Dal.Models;assembly=BillManager.Dal"  
+            xmlns:syncfusion="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
+            xmlns:sfListView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:local="clr-namespace:BillManager.ViewModels"  
+             x:Name="BrowseItemsPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="btnAddBill_Clicked"  x:Name="btnAddBill" />
+        <ToolbarItem Order="Primary"  IconImageSource="" x:Name="btnclearTestData" Clicked="btnclearTestData_Clicked" />
+
+
+    </ContentPage.ToolbarItems>
+
+    <!--
+      x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
+      https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/data-binding/compiled-bindings
+    -->
+    <RefreshView x:Name="billRefresh" Refreshing="billRefresh_Refreshing">
+
+        <StackLayout>
+            
+            <syncfusion:SfCalendar x:Name="billCalendar" SelectionMode="SingleSelection" OnCalendarTapped="billCalendar_OnCalendarTapped" HeightRequest="400" WidthRequest="400" />
+            <sfListView:SfListView x:Name="listView"  ItemsSource="{Binding DataSource.Bills}" AllowSwiping="True"
+                 
+                   ItemSize="100">
+                <sfListView:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10,10,10,10"  CornerRadius="10" HasShadow="True"   BackgroundColor="Black">
+                            <Grid>
+                                <Label Text="June" Grid.Row="0" Grid.Column="0" FontAttributes="Bold"  TextColor="Teal" FontSize="21" />
+                                <Label Text="26" Grid.Row="1" Grid.Column="0" FontAttributes="Bold"  TextColor="Teal" FontSize="21" />
+                                <Label Text="{Binding  Description}" Grid.Row="1" Grid.Column="2" FontAttributes="Bold"  TextColor="Teal" FontSize="21" />
+                                <BoxView HeightRequest="10"></BoxView>
+                            </Grid>
+                           
+                        </Frame>
+
+
+                    </DataTemplate>
+                </sfListView:SfListView.ItemTemplate>
+            </sfListView:SfListView>
+
+        </StackLayout>
+    </RefreshView>
+</ContentPage>

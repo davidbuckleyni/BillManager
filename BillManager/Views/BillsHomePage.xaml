@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:control="clr-namespace:BillManager.Controls" 
+            xmlns:fonticons="clr-namespace:BillManager.FontIcons"  
+             x:Class="BillManager.Views.BillsHomePage">
+ 
+        <Grid
+        HorizontalOptions="FillAndExpand"
+        RowDefinitions="*, auto"
+        RowSpacing="0"
+        VerticalOptions="FillAndExpand">
+            <ScrollView Grid.Row="0">
+
+                <Label
+                        x:Name="lbHome"
+                        Grid.Column="1"
+                        FontFamily="MuliBold"
+                        FontSize="12"
+                        HorizontalOptions="FillAndExpand"
+                        Text="Home"
+                        TextColor="{StaticResource orange}"
+                        VerticalTextAlignment="Center" />
+          
+                
+
+
+                        <control:ListBillTypesView
+                    Grid.Row="3"
+                    Grid.ColumnSpan="3"
+                    Margin="20,15,0,0"
+                    VerticalOptions="Start" />
+
+                    
+                </Grid>
+            </ScrollView>
+        </Grid>
+
+
+    </>
+</ContentPage>
