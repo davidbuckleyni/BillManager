@@ -51,12 +51,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\BillManager.Dal\BillManager.Dal\BillManager.Dal.csproj" />
+    <Folder Include="DataTemplates\" />
+    <Folder Include="Models\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DataTemplates\" />
-    <Folder Include="Models\" />
+    <ProjectReference Include="..\BillManager.Dal\BillManager.Dal.csproj" />
   </ItemGroup>
 
   <ItemGroup>
