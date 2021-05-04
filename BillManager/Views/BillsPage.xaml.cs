@@ -25,20 +25,17 @@ namespace BillManager.Views
         {
             InitializeComponent();
             db = new BillManagerDB();
-
             Setup();
-            
+            BindingContext = new BillsViewModel();
+
         }
 
         private async void Setup()
         {
             string startDate = "28/04/2021";
             DateTime startDateParse = DateTime.ParseExact(startDate, "dd/MM/yyyy", null);
-
-
             bills =await db.GetAllBills();
             listView.ItemsSource = bills;
-
             
             listView.ItemsSource = bills;
             billCalendar.SelectedDate = DateTime.Now;
@@ -77,6 +74,11 @@ namespace BillManager.Views
             IsBusy = true;
             listView.ItemsSource = bills.ToList();
             IsBusy = false;
+
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
 
         }
     }

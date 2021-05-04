@@ -7,7 +7,10 @@
             xmlns:syncfusion="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
             xmlns:sfListView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:local="clr-namespace:BillManager.ViewModels"  
-             x:Name="BrowseItemsPage">
+             xmlns:control="clr-namespace:BillManager.Controls"
+            xmlns:fonticons="clr-namespace:BillManager.FontIcons"
+            BackgroundColor="White"
+            x:Name="BrowseItemsPage">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Clicked="btnAddBill_Clicked"  x:Name="btnAddBill" />
@@ -23,14 +26,59 @@
     <RefreshView x:Name="billRefresh" Refreshing="billRefresh_Refreshing">
 
         <StackLayout>
+            <Grid>
+                <Frame
+                x:Name="frameHome"
+                Grid.Column="0"
+                BackgroundColor="White"
+               
+                HasShadow="False"
+                HorizontalOptions="FillAndExpand"
+                IsClippedToBounds="True"
+                StyleId="frameHome">
+                    <Grid Margin="0,15,0,0" ColumnDefinitions="auto, auto">
+                        <Label
+                        x:Name="lbIconHome"
+                        Grid.Column="0"
+                        FontFamily="MaterialIcons"
+                        FontSize="24"
+                        HorizontalTextAlignment="Center"
+                        Text="{x:Static fonticons:FontIcons.Home}"
+                        TextColor="{StaticResource orange}"
+                        VerticalTextAlignment="Center" />
+                        <Label
+                        x:Name="lbHome"
+                        Grid.Column="1"
+                        FontFamily="MuliBold"
+                        FontSize="12"
+                        HorizontalOptions="FillAndExpand"
+                        Text="Home"
+                        TextColor="{StaticResource orange}"
+                        VerticalTextAlignment="Center" />
+                    </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </Grid>
             
-            <syncfusion:SfCalendar x:Name="billCalendar" SelectionMode="SingleSelection" OnCalendarTapped="billCalendar_OnCalendarTapped" HeightRequest="400" WidthRequest="400" />
+            <control:ListBillTypesView
+                    Grid.Row="4"
+                    Grid.ColumnSpan="4"
+                    Margin="20,15,0,0"
+                    VerticalOptions="Start" />
+
+            <syncfusion:SfCalendar x:Name="billCalendar"
+                                   
+                                    ShowInlineEvents="True"
+                                    ShowNavigationButtons="True"
+                                   SelectionMode="SingleSelection" OnCalendarTapped="billCalendar_OnCalendarTapped" HeightRequest="400" WidthRequest="400" />
             <sfListView:SfListView x:Name="listView"  ItemsSource="{Binding DataSource.Bills}" AllowSwiping="True"
                  
                    ItemSize="100">
                 <sfListView:SfListView.ItemTemplate>
                     <DataTemplate>
-                        <Frame Padding="10,10,10,10"  CornerRadius="10" HasShadow="True"   BackgroundColor="Black">
+                        <Frame Padding="10,10,10,10"  CornerRadius="10" HasShadow="True"  >
                             <Grid>
                                 <Label Text="June" Grid.Row="0" Grid.Column="0" FontAttributes="Bold"  TextColor="Teal" FontSize="21" />
                                 <Label Text="26" Grid.Row="1" Grid.Column="0" FontAttributes="Bold"  TextColor="Teal" FontSize="21" />

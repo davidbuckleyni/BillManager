@@ -12,6 +12,7 @@ namespace BillManager.ViewModels
     public class BillsViewModel : BaseViewModel
     {
         private Bills _selectedItem;
+        public ObservableCollection<BillTypes> BillTypes { get; }
 
         public ObservableCollection<Bills> Bills { get; }
         public Command LoadItemsCommand { get; }
@@ -22,8 +23,8 @@ namespace BillManager.ViewModels
         {
             Title = "Browse";
             Bills = new ObservableCollection<Bills>();
-
-           
+            BillTypes = new ObservableCollection<BillTypes>();
+            loadBillTypes();
 
         }
 
@@ -66,7 +67,35 @@ namespace BillManager.ViewModels
             }
         }
 
-       
+
+        private void loadBillTypes()
+        {
+            BillTypes.Add(new BillTypes()
+            {
+                Name = "Car Insurnace",
+                Image = "mic.png",
+                Selected = true,
+                BackgroundColor = "#FCCD00",
+                textColor = "#000000"
+            });
+
+            BillTypes.Add(new BillTypes()
+            {
+                Name = "House Hold Bills",
+                Image = "ping_pong.png",
+                BackgroundColor = "#29404E",
+                textColor = "#FFFFFF"
+            });
+
+            BillTypes.Add(new BillTypes()
+            {
+                Name = "Telecomes",
+                Image = "graduation.png",
+                BackgroundColor = "#29404E",
+                textColor = "#FFFFFF"
+            });
+        }
+
 
         async void OnItemSelected(Bills item)
         {

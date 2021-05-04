@@ -32,7 +32,8 @@ namespace BillManager.Views
             bill.isDeleted = false;
             await db.SaveBillItem(bill);
             await DisplayAlert("Bill Saved", "Your build details have been saved.", "OK");
-            await Shell.Current.GoToAsync("BillsPage");
+            await Shell.Current.GoToAsync("..");
+
         }
 
         private async  void btnCancel_Clicked(object sender, EventArgs e)
